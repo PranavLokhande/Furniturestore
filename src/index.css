@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 14% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 14% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 14% 14%;
+    --primary: 222 14% 14%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 36 25% 97%;
+    --secondary-foreground: 222 14% 14%;
+    --muted: 36 15% 96%;
+    --muted-foreground: 215 14% 47%;
+    --accent: 44 89% 61%;
+    --accent-foreground: 222 14% 14%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 36 20% 90%;
+    --input: 36 20% 90%;
+    --ring: 44 89% 61%;
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
+  }
+
+  #root {
+    overflow-x: hidden;
+    max-width: 100vw;
+    width: 100%;
+  }
+
+  img {
+    @apply max-w-full;
+  }
+}
+
+@layer components {
+  /* ── BUTTONS ───────────────────────────────────────────── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm bg-brand-dark text-white font-semibold
+           px-6 py-3 text-sm tracking-wide transition-all duration-200
+           hover:bg-brand-dark/85 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-yellow {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm bg-brand-yellow text-brand-dark font-bold
+           px-6 py-3 text-sm tracking-wide transition-all duration-200
+           hover:bg-brand-yellow/90 active:scale-[0.98];
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm border border-brand-dark text-brand-dark font-semibold
+           px-6 py-3 text-sm tracking-wide transition-all duration-200
+           hover:bg-brand-dark hover:text-white active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-sm text-brand-dark font-semibold
+           px-4 py-2 text-sm transition-all duration-200
+           hover:bg-brand-bg active:scale-[0.98];
+  }
+
+  /* ── PRODUCT CARDS ─────────────────────────────────────── */
+  .product-card {
+    @apply relative bg-white rounded-sm border border-brand-border overflow-hidden
+           transition-shadow duration-300 hover:shadow-lg cursor-pointer;
+  }
+
+  .product-card-image-wrap {
+    @apply relative overflow-hidden bg-brand-bg aspect-[4/5];
+  }
+
+  .product-card-img {
+    @apply w-full h-full object-cover transition-transform duration-500 group-hover:scale-105;
+  }
+
+  .product-card-img-secondary {
+    @apply w-full h-full object-cover transition-opacity duration-500
+           opacity-0 group-hover:opacity-100 absolute inset-0;
+  }
+
+  .discount-badge {
+    @apply absolute top-2 left-2 bg-brand-badge text-brand-dark text-xs font-bold
+           px-2 py-1 rounded-sm z-10 tracking-wide;
+  }
+
+  .new-badge {
+    @apply absolute top-2 left-2 bg-brand-dark text-white text-xs font-bold
+           px-2 py-1 rounded-sm z-10 tracking-widest uppercase;
+  }
+
+  .wishlist-btn {
+    @apply absolute top-2 right-2 w-8 h-8 rounded-full bg-white shadow-sm
+           flex items-center justify-center transition-all duration-200 z-10
+           opacity-90 sm:opacity-0 sm:group-hover:opacity-100 hover:scale-110;
+  }
+
+  .quick-add-btn {
+    @apply absolute bottom-0 left-0 right-0 btn-primary rounded-none py-2.5
+           translate-y-full group-hover:translate-y-0 transition-transform duration-300 text-xs;
+  }
+
+  /* ── SECTION HEADINGS ──────────────────────────────────── */
+  .section-heading {
+    @apply text-2xl md:text-3xl font-display font-bold text-brand-dark tracking-tight;
+  }
+
+  .section-subheading {
+    @apply text-brand-muted text-sm md:text-base mt-1;
+  }
+
+  /* ── TYPOGRAPHY ────────────────────────────────────────── */
+  .price-current {
+    @apply text-brand-dark font-bold text-lg;
+  }
+
+  .price-original {
+    @apply text-brand-muted text-sm line-through ml-1.5;
+  }
+
+  .price-discount {
+    @apply text-green-600 text-sm font-semibold ml-1.5;
+  }
+
+  /* ── CAROUSEL ──────────────────────────────────────────── */
+  .carousel-btn {
+    @apply w-10 h-10 rounded-full bg-white shadow-md border border-brand-border
+           flex items-center justify-center transition-all duration-200
+           hover:bg-brand-dark hover:text-white hover:border-brand-dark;
+  }
+
+  /* ── SKELETON ──────────────────────────────────────────── */
+  .skeleton {
+    @apply bg-brand-border animate-pulse rounded-sm;
+  }
+
+  /* ── FILTER SIDEBAR ────────────────────────────────────── */
+  .filter-section {
+    @apply border-b border-brand-border pb-4 mb-4 last:border-0 last:mb-0;
+  }
+
+  .filter-heading {
+    @apply text-sm font-semibold text-brand-dark mb-3 flex items-center justify-between cursor-pointer;
+  }
+
+  /* ── STAR RATING ───────────────────────────────────────── */
+  .star-filled  { @apply text-brand-yellow fill-brand-yellow; }
+  .star-empty   { @apply text-brand-border; }
+}
+
+@layer utilities {
+  .text-balance    { text-wrap: balance; }
+  .hide-scrollbar  { scrollbar-width: none; -ms-overflow-style: none; }
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+}
